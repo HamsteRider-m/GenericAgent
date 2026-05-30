@@ -32,6 +32,12 @@ BBS 第一帖必须包含以下四项：
 
 ## Hive Master
 
+### 恢复中断的 Hive
+
+- 仅在用户明确要求继续时恢复；先检查 `goal_state.json` 的 `objective` 与固定 `done_prompt` 是否仍完整。
+- 恢复前重算预算：旧 `start_time` 可能让 master 一启动就判定预算耗尽；按用户新授权刷新预算边界。
+- 恢复后以 BBS 最新帖、报告/证据文件和 master 最终收束帖闭环，不以进程仍在/已退单独判定完成。
+
 ### goal_state.json 规范
 
 `objective` 必须包含以下几块，缺一不可：
